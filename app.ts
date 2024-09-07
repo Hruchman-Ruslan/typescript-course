@@ -1,18 +1,29 @@
-function add(n1: number, n2: number, showResult: boolean, phrase: string) {
-	// if (typeof n1 !== 'number' || typeof n2 !== 'number') {
-	// 	throw new Error('Incorrect input!')
-	// }
-	const result = n1 + n2
-	if (showResult) {
-		console.log(phrase + result)
-	} else {
-		return result
-	}
+// const person: {
+// 	name: string
+// 	age: number
+// } = {
+const person: {
+	name: string
+	age: number
+	hobbies: string[]
+	role: [number, string] // tuples type O_o
+} = {
+	name: 'Ruslan',
+	age: 32,
+	hobbies: ['Sports', 'Cooking'],
+	role: [0, 'author'], // tuples type O_o
 }
 
-const number1 = 5
-const number2 = 2.8
-const printResult = true
-const resultPhrase = 'Result is: '
+// person.role.push('admin') // no ERROR
+// person.role[1] = 10 // ERROR
+// person.role = [0, 'admin', 'user'] // ERROR
 
-add(number1, number2, printResult, resultPhrase)
+let favoriteActivities: string[]
+favoriteActivities = ['Sports']
+
+console.log(person.name)
+
+for (const hobby of person.hobbies) {
+	console.log(hobby.toUpperCase())
+	// console.log(hobby.map()) !!! ERROR
+}
