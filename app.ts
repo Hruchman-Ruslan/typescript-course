@@ -2,16 +2,29 @@
 // 	name: string
 // 	age: number
 // } = {
-const person: {
-	name: string
-	age: number
-	hobbies: string[]
-	role: [number, string] // tuples type O_o
-} = {
+// const person: {
+// 	name: string
+// 	age: number
+// 	hobbies: string[]
+// 	role: [number, string] // tuples type O_o
+// } = {
+// 	name: 'Ruslan',
+// 	age: 32,
+// 	hobbies: ['Sports', 'Cooking'],
+// 	role: [0, 'author'],
+// }
+
+enum Role {
+	ADMIN = 'ADMIN',
+	READ_ONLY = 100,
+	AUTHOR = 'AUTHOR',
+}
+
+const person = {
 	name: 'Ruslan',
 	age: 32,
 	hobbies: ['Sports', 'Cooking'],
-	role: [0, 'author'], // tuples type O_o
+	role: Role.ADMIN,
 }
 
 // person.role.push('admin') // no ERROR
