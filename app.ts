@@ -1,28 +1,18 @@
-function add(n1: number, n2: number) {
-	return n1 + n2
+let userInput: unknown
+let userName: string
+
+userInput = 5
+userInput = 'Ruslan'
+
+if (typeof userInput === 'string') {
+	userName = userInput // no Error
 }
 
-function printResult(num: number): void {
-	console.log('Result:' + num)
+// userName = userInput no Error
+
+function generateError(message: string, code: number): never {
+	throw { message: message, errorCode: code }
+	// while(true) {}
 }
 
-function addAndHandler(n1: number, n2: number, cd: (num: number) => void) {
-	const result = n1 + n2
-	cd(result)
-}
-
-printResult(add(5, 12))
-
-let combineValues: (a: number, b: number) => number
-
-combineValues = add
-// combineValues = printResult ERROR
-// combineValues = 5 ERROR
-
-console.log(combineValues(8, 8))
-
-// let someValue: undefined
-
-addAndHandler(10, 20, result => {
-	console.log(result)
-})
+generateError('An error occurred!', 500)
