@@ -7,3 +7,13 @@ function printResult(num: number): void {
 }
 
 printResult(add(5, 12))
+
+let combineValues: (a: number, b: number) => number
+
+combineValues = add
+// combineValues = printResult ERROR
+// combineValues = 5 ERROR
+
+console.log(combineValues(8, 8))
+
+// let someValue: undefined
