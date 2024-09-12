@@ -5,6 +5,7 @@
 		"rootDir": "./src", // Specifies the root directory of the source files.
 		"outDir": "./dist", // Specifies the directory for the generated output files.
 		"removeComments": true, // Remove comments from the generated code.
+		"noEmitOnError": true, // Prevents output of compiled files if any errors are found.
 
 		"esModuleInterop": true, // Enables interoperability between CommonJS and ES Modules.
 
