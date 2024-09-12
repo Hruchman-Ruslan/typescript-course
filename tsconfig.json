@@ -1,22 +1,28 @@
 {
 	"compilerOptions": {
 		/* Modules */
-		"module": "commonjs", // Use CommonJS module standard for generating JavaScript.
-		"rootDir": "./src", // Specifies the root directory of the source files.
-		"outDir": "./dist", // Specifies the directory for the generated output files.
-		"removeComments": true, // Remove comments from the generated code.
-		"noEmitOnError": true, // Prevents output of compiled files if any errors are found.
+		"module": "commonjs", // CommonJS module system
+		"rootDir": "./src", // Source files root directory
+		"outDir": "./dist", // Output directory for compiled files
+		"removeComments": true, // Remove comments in output
+		"noEmitOnError": true, // No output if there are errors
+		"sourceMap": true, // Generate source maps
 
-		"esModuleInterop": true, // Enables interoperability between CommonJS and ES Modules.
+		"esModuleInterop": true, // CommonJS and ES module interop
 
 		/* Type Checking */
-		"strict": true // Enables all strict type-checking options.
-		// "noImplicitAny": false, // Disables the rule that would report errors when variables are implicitly set to `any` type.
-		// "strictNullChecks": true, // Enforces strict handling of `null` and `undefined` types.
-		// "strictBindCallApply": true, // Ensures that `call`, `bind`, and `apply` methods are invoked with correct arguments and context types.
-		// "alwaysStrict": true, // Adds `'use strict'` at the top of every JavaScript file for strict JavaScript mode.
-		// "skipLibCheck": true // Skips type checking of declaration files (`.d.ts`), which speeds up the compilation process.
+		"strict": true, // Enable strict type-checking
+		// "noImplicitAny": false, // Allow implicit `any` type
+		// "strictNullChecks": true, // Strict `null` and `undefined` checks
+		// "strictBindCallApply": true, // Strict `call`, `bind`, `apply` checks
+		// "alwaysStrict": true, // Always use 'strict' mode
+		// "skipLibCheck": true // Skip checking `.d.ts` files
+
+		/* Additional Checking */
+		"noUnusedLocals": true, // Error on unused local variables
+		"noUnusedParameters": true, // Error on unused parameters
+		"noImplicitReturns": true // Error if not all code paths return a value
 	},
-	"exclude": ["node_modules"] // Excludes the node_modules folder from the compilation.
-	// "include": ["app.ts, analytics.ts"] // Optionally specify files or folders to include.
+	"exclude": ["node_modules"] // Exclude `node_modules` from compilation
+	// "include": ["app.ts, analytics.ts"] // Include specific files
 }
