@@ -10,12 +10,17 @@
 		"esModuleInterop": true, // Enables interoperability between CommonJS and ES Modules.
 
 		/* Type Checking */
-		"strict": true // Enables all strict type-checking options.
+		"strict": true, // Enables all strict type-checking options.
 		// "noImplicitAny": false, // Disables the rule that would report errors when variables are implicitly set to `any` type.
 		// "strictNullChecks": true, // Enforces strict handling of `null` and `undefined` types.
 		// "strictBindCallApply": true, // Ensures that `call`, `bind`, and `apply` methods are invoked with correct arguments and context types.
 		// "alwaysStrict": true, // Adds `'use strict'` at the top of every JavaScript file for strict JavaScript mode.
 		// "skipLibCheck": true // Skips type checking of declaration files (`.d.ts`), which speeds up the compilation process.
+
+		/* Additional Checking */
+		"noUnusedLocals": true, // Reports an error if local variables are declared but not used in the code.
+		"noUnusedParameters": true, // Reports an error if function parameters are unused.
+		"noImplicitReturns": true // Ensures all code paths in a function return a value, otherwise it triggers an error.
 	},
 	"exclude": ["node_modules"] // Excludes the node_modules folder from the compilation.
 	// "include": ["app.ts, analytics.ts"] // Optionally specify files or folders to include.
