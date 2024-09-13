@@ -1,6 +1,7 @@
 {
 	"compilerOptions": {
 		/* Modules */
+		"target": "ES2016",
 		"module": "commonjs", // CommonJS module system
 		"rootDir": "./src", // Source files root directory
 		"outDir": "./dist", // Output directory for compiled files
