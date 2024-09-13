@@ -1,22 +1,30 @@
-let appId = 'adc'
+const useName = 'Ruslan'
+// userName = "Other" ERROR
+let age = 32
+age = 33
 
-const button = document.querySelector('button')!
+// var result
 
-function clickHandler(message: string, age: number) {
-	// let userName = 'Ruslan'
-	console.log('Clicked!' + message, age)
-}
+// function add(a: number, b: number) {
+// 	// var result No find console.log(result)
+// 	let result
+// 	result = a + b
+// 	return result
+// }
 
-function add(n1: number, n2: number) {
-	if (n1 + n2 > 0) {
-		return n1 + n2
-	}
-	return
-}
+// if (age > 20) {
+// 	let isOld = true
+// }
 
-if (button) {
-	button.addEventListener(
-		'click',
-		clickHandler.bind(null, " You're welcome", 32)
-	)
-}
+// console.log(isOld)
+// console.log(result)
+
+const add = (a: number, b: number) => a + b
+
+const printOutput: (a: number | string) => void = output => console.log(output)
+
+const button = document.querySelector('button')
+
+button?.addEventListener('click', e => console.log(e))
+
+printOutput(add(2, 5))
