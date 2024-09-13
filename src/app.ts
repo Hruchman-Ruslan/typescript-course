@@ -28,3 +28,16 @@ const button = document.querySelector('button')
 button?.addEventListener('click', e => console.log(e))
 
 printOutput(add(2))
+
+const hobbies = ['Sport', 'Cookies']
+const activeHobbies = ['Hiking']
+
+activeHobbies.push(...hobbies)
+
+const person = {
+	name: 'Ruslan',
+	age: 32,
+}
+
+const copiedPerson = { ...person }
+console.log(copiedPerson)
