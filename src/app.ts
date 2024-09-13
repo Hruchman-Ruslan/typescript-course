@@ -19,7 +19,7 @@ age = 33
 // console.log(isOld)
 // console.log(result)
 
-const add = (a: number, b: number) => a + b
+const add = (a: number, b: number = 5) => a + b
 
 const printOutput: (a: number | string) => void = output => console.log(output)
 
@@ -27,4 +27,4 @@ const button = document.querySelector('button')
 
 button?.addEventListener('click', e => console.log(e))
 
-printOutput(add(2, 5))
+printOutput(add(2))
