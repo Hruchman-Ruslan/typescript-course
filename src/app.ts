@@ -1,7 +1,7 @@
-const useName = 'Ruslan'
-// userName = "Other" ERROR
-let age = 32
-age = 33
+// const useName = 'Ruslan'
+// // userName = "Other" ERROR
+// let age = 32
+// age = 33
 
 // var result
 
@@ -29,13 +29,13 @@ age = 33
 
 // printOutput(add(2))
 
-const hobbies = ['Sport', 'Cookies']
+const hobbies = ['Sport', 'Cookies', 'other', 'and Other']
 const activeHobbies = ['Hiking']
 
 activeHobbies.push(...hobbies)
 
 const person = {
-	name: 'Ruslan',
+	firstName: 'Ruslan',
 	age: 32,
 }
 
@@ -60,3 +60,10 @@ const add = (...numbers: number[]) => {
 const addedNumbers = add(5, 10, 2, 3.7)
 
 console.log(addedNumbers)
+
+const [hobby1, hobby2, ...remainingHobbies] = hobbies
+
+console.log(hobbies, hobby1, hobby2, remainingHobbies)
+
+const { firstName: userName, age } = person
+console.log(userName, age, person)
