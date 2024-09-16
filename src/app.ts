@@ -1,11 +1,11 @@
-class Department {
+abstract class Department {
 	static fiscalYear = 2024
 	// public readonly id: string // public it's default properties
 	// public name: string // public it's default properties
 	// private employees: string[] = [] // can use inside Department class
 	protected employees: string[] = [] // can use in extends Classes example ITDepartment and AccountingDepartment
 
-	constructor(private readonly id: string, public name: string) {
+	constructor(protected readonly id: string, public name: string) {
 		// this.name = name
 		// this.id = id
 		// console.log(Department.fiscalYear)
@@ -15,9 +15,7 @@ class Department {
 		return { name: name }
 	}
 
-	describe(this: Department) {
-		console.log(`Department (${this.id}: ${this.name})`)
-	}
+	abstract describe(this: Department): void
 
 	addEmployee(employee: string) {
 		// this.id = 'd2' // can't change value because we have readonly properties
@@ -35,6 +33,10 @@ class ITDepartment extends Department {
 	constructor(id: string, admins: string[]) {
 		super(id, 'IT')
 		this.admins = admins
+	}
+
+	describe() {
+		console.log('IT Department - ID: ' + this.id)
 	}
 }
 
@@ -58,6 +60,10 @@ class AccountingDepartment extends Department {
 	constructor(id: string, private reports: string[]) {
 		super(id, 'Accounting')
 		this.lastReports = reports[0]
+	}
+
+	describe() {
+		console.log('Accounting Department - ID: ' + this.id)
 	}
 
 	addEmployee(name: string) {
@@ -104,5 +110,6 @@ console.log(accounting.mostRecentReport)
 accounting.addEmployee('Ruslan')
 accounting.addEmployee('Max')
 
-accounting.printReports()
-accounting.printEmployeeInformation()
+// accounting.printReports()
+// accounting.printEmployeeInformation()
+accounting.describe()
