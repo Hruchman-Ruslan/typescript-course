@@ -1,17 +1,21 @@
-class Department {
+abstract class Department {
+	static fiscalYear = 2024
 	// public readonly id: string // public it's default properties
 	// public name: string // public it's default properties
 	// private employees: string[] = [] // can use inside Department class
 	protected employees: string[] = [] // can use in extends Classes example ITDepartment and AccountingDepartment
 
-	constructor(private readonly id: string, public name: string) {
+	constructor(protected readonly id: string, public name: string) {
 		// this.name = name
 		// this.id = id
+		// console.log(Department.fiscalYear)
 	}
 
-	describe(this: Department) {
-		console.log(`Department (${this.id}: ${this.name})`)
+	static createEmployee(name: string) {
+		return { name: name }
 	}
+
+	abstract describe(this: Department): void
 
 	addEmployee(employee: string) {
 		// this.id = 'd2' // can't change value because we have readonly properties
@@ -30,11 +34,45 @@ class ITDepartment extends Department {
 		super(id, 'IT')
 		this.admins = admins
 	}
+
+	describe() {
+		console.log('IT Department - ID: ' + this.id)
+	}
 }
 
 class AccountingDepartment extends Department {
-	constructor(id: string, private reports: string[]) {
+	private lastReports: string
+	private static instance: AccountingDepartment
+
+	get mostRecentReport() {
+		if (this.lastReports) {
+			return this.lastReports
+		}
+		throw new Error('No report found.')
+	}
+
+	set mostRecentReport(value: string) {
+		if (!value) {
+			throw new Error('Please pass in a valid value!')
+		}
+		this.addReport(value)
+	}
+
+	private constructor(id: string, private reports: string[]) {
 		super(id, 'Accounting')
+		this.lastReports = reports[0]
+	}
+
+	static getInstance() {
+		if (AccountingDepartment.instance) {
+			return this.instance
+		}
+		this.instance = new AccountingDepartment('d2', [])
+		return this.instance
+	}
+
+	describe() {
+		console.log('Accounting Department - ID: ' + this.id)
 	}
 
 	addEmployee(name: string) {
@@ -46,12 +84,16 @@ class AccountingDepartment extends Department {
 
 	addReport(text: string) {
 		this.reports.push(text)
+		this.lastReports = text
 	}
 
 	printReports() {
 		console.log(this.reports)
 	}
 }
+
+const employee1 = Department.createEmployee('Ruslan')
+console.log(employee1, Department.fiscalYear)
 
 const it = new ITDepartment('d1', ['Ruslan'])
 
@@ -68,12 +110,19 @@ it.printEmployeeInformation() // accountingCopy.describe()
 
 console.log(it)
 
-const accounting = new AccountingDepartment('d2', [])
+// const accounting = new AccountingDepartment('d2', [])
+const accounting = AccountingDepartment.getInstance()
+const accounting2 = AccountingDepartment.getInstance()
 
+console.log(accounting, accounting2)
+
+accounting.mostRecentReport = 'Year End Report'
 accounting.addReport('Something went wrong...')
+console.log(accounting.mostRecentReport)
 
 accounting.addEmployee('Ruslan')
 accounting.addEmployee('Max')
 
-accounting.printReports()
-accounting.printEmployeeInformation()
+// accounting.printReports()
+// accounting.printEmployeeInformation()
+accounting.describe()
