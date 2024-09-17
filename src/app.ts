@@ -1,5 +1,5 @@
 interface IGreetable {
-	name: string
+	readonly name: string
 	age: number
 
 	greet(phrase: string): void
@@ -21,6 +21,7 @@ class Person implements IGreetable {
 let user1: IGreetable
 
 user1 = new Person('Ruslan')
+// user1.name = 'Max' // ERROR because we have readonly properties name
 
 user1.greet('Hi there I - am')
 console.log(user1)
