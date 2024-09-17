@@ -12,6 +12,8 @@ add = (n1: number, n2: number) => {
 interface INamed {
 	readonly name?: string
 	outputName?: string
+
+	// greet?() : void also we cant use optionals methods if we need
 }
 
 // interface IGreetable extends INamed, OtherInterface { // we can extends many Interface when ise Interface, but we can't do this with Classes
