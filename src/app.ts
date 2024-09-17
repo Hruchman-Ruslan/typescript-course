@@ -1,7 +1,12 @@
-interface IGreetable {
+interface INamed {
 	readonly name: string
-	age: number
+}
 
+// interface IGreetable extends INamed, OtherInterface { // we can extends many Interface when ise Interface, but we can't do this with Classes
+// 	greet(phrase: string): void
+// }
+
+interface IGreetable extends INamed {
 	greet(phrase: string): void
 }
 
