@@ -1,3 +1,14 @@
+// type AddFun = (a: number, b: number) => number
+interface AddFun {
+	(a: number, b: number): number
+}
+
+let add: AddFun
+
+add = (n1: number, n2: number) => {
+	return n1 + n2
+}
+
 interface INamed {
 	readonly name: string
 }
