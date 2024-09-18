@@ -1,53 +1,88 @@
-// type AddFun = (a: number, b: number) => number
-interface AddFun {
-	(a: number, b: number): number
-}
-
-let add: AddFun
-
-add = (n1: number, n2: number) => {
-	return n1 + n2
-}
-
-interface INamed {
-	readonly name?: string
-	outputName?: string
-
-	// greet?() : void also we cant use optionals methods if we need
-}
-
-// interface IGreetable extends INamed, OtherInterface { // we can extends many Interface when ise Interface, but we can't do this with Classes
-// 	greet(phrase: string): void
+// interface Admin  {
+// 	name: string
+// 	privileges: string[]
 // }
 
-interface IGreetable extends INamed {
-	greet(phrase: string): void
+// interface Employee  {
+// 	name: string
+// 	startDate: Date
+// }
+
+// interface ElevatedEmployee extends Admin , Employee {}
+
+type Admin = {
+	name: string
+	privileges: string[]
 }
 
-class Person implements IGreetable {
-	name?: string
-	age = 32
+type Employee = {
+	name: string
+	startDate: Date
+}
 
-	constructor(n?: string) {
-		if (n) {
-			this.name = n
-		}
+type ElevatedEmployee = Admin & Employee
+
+const e1: ElevatedEmployee = {
+	name: 'Ruslan',
+	privileges: ['create-server'],
+	startDate: new Date(),
+}
+
+type Combinable = string | number
+type Numeric = number | boolean
+
+type Universal = Combinable & Numeric
+
+function add(a: Combinable, b: Combinable) {
+	if (typeof a === 'string' || typeof b === 'string') {
+		return a.toString() + b.toString()
+	}
+	return a + b
+}
+
+type UnknownEmployee = Employee | Admin
+
+function printEmployeeInformation(emp: UnknownEmployee) {
+	console.log('Name: ' + emp.name)
+
+	if ('privileges' in emp) {
+		console.log('Privileges: ' + emp.privileges)
 	}
 
-	greet(phrase: string): void {
-		if (this.name) {
-			console.log(phrase + ' ' + this.name)
-		} else {
-			console.log('Hi')
-		}
+	if ('startDate' in emp) {
+		console.log('Start Date: ' + emp.startDate)
 	}
 }
 
-let user1: IGreetable
+printEmployeeInformation({ name: 'Ruslan', startDate: new Date() })
 
-user1 = new Person('Ruslan')
-// user1 = new Person() now we can use because we adding ? optionals parameters
-// user1.name = 'Max' // ERROR because we have readonly properties name
+class Car {
+	drive() {
+		console.log('Driving...')
+	}
+}
 
-user1.greet('Hi there I - am')
-console.log(user1)
+class Truck {
+	drive() {
+		console.log('Driving a truck...')
+	}
+
+	loadCargo(amount: number) {
+		console.log('Loading cargo ...' + amount)
+	}
+}
+
+type Vehicle = Car | Truck
+
+const v1 = new Car()
+const v2 = new Truck()
+
+function useVehicle(vehicle: Vehicle) {
+	vehicle.drive()
+	if (vehicle instanceof Truck) {
+		vehicle.loadCargo(1000)
+	}
+}
+
+useVehicle(v1)
+useVehicle(v2)
