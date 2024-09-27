@@ -50,3 +50,40 @@ function extractAndConvert<T extends object, U extends keyof T>(
 
 // extractAndConvert({ name: 'Ruslan' }, 'age') // error because key is't a name extends with type T
 extractAndConvert({ name: 'Ruslan' }, 'name') // no error
+
+class DataStorage<T extends string | number | boolean> {
+	private data: T[] = []
+
+	addItem(item: T) {
+		this.data.push(item)
+	}
+
+	removeItem(item: T) {
+		if (this.data.indexOf(item) === -1) {
+			return
+		}
+		this.data.splice(this.data.indexOf(item), 1) // -1
+	}
+
+	getItems() {
+		return [...this.data]
+	}
+}
+
+const textStorage = new DataStorage<string>()
+// textStorage.addItem(10) // error because number is't a string type
+textStorage.addItem('Ruslan')
+textStorage.addItem('Manu')
+textStorage.removeItem('Ruslan')
+
+console.log(textStorage.getItems())
+
+const numberStorage = new DataStorage<number>() // now it's number types. If we try use string we have error
+
+// const objStorage = new DataStorage<object>()
+// const myRef = { name: 'Ruslan' }
+// objStorage.addItem(myRef)
+// objStorage.addItem({ name: 'Manu' })
+// // ...
+// objStorage.removeItem(myRef)
+// console.log(objStorage.getItems())
