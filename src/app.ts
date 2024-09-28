@@ -87,3 +87,25 @@ const numberStorage = new DataStorage<number>() // now it's number types. If we 
 // // ...
 // objStorage.removeItem(myRef)
 // console.log(objStorage.getItems())
+
+interface CourseGoal {
+	title: string
+	description: string
+	completeUntil: Date
+}
+
+function createCourseGoal(
+	title: string,
+	description: string,
+	completeUntil: Date
+): CourseGoal {
+	let courseGoal: Partial<CourseGoal> = {}
+	courseGoal.title = title
+	courseGoal.description = description
+	courseGoal.completeUntil = completeUntil
+	return courseGoal as CourseGoal
+}
+
+const names: Readonly<string[]> = ['Ruslan', 'Anna']
+// names.push('Manu') // error because we have readonly string[]
+// names.pop() // error because we have readonly string[]
