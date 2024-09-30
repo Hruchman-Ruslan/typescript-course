@@ -22,7 +22,9 @@
 		/* Additional Checking */
 		"noUnusedLocals": true, // Error on unused local variables
 		"noUnusedParameters": true, // Error on unused parameters
-		"noImplicitReturns": true // Error if not all code paths return a value
+		"noImplicitReturns": true, // Error if not all code paths return a value
+
+		"experimentalDecorators": true // Enables experimental support for decorators
 	},
 	"exclude": ["node_modules"] // Exclude `node_modules` from compilation
 	// "include": ["app.ts, analytics.ts"] // Include specific files
