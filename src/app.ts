@@ -124,3 +124,40 @@ const p = new Printer()
 const button = document.querySelector('button')!
 // button.addEventListener('click', p.showMessage.bind(p)) // js result
 button.addEventListener('click', p.showMessage) // line 106
+
+// ---
+
+function Required() {}
+
+function PositiveNumber() {}
+
+function validate(obj: object) {}
+
+class Course {
+	@Required
+	title: string
+	@PositiveNumber
+	price: number
+
+	constructor(t: string, p: number) {
+		this.title = t
+		this.price = p
+	}
+}
+
+const courseFrom = document.querySelector('form')!
+courseFrom.addEventListener('submit', e => {
+	e.preventDefault()
+
+	const titleEl = document.getElementById('title') as HTMLInputElement
+	const priceEl = document.getElementById('price') as HTMLInputElement
+
+	const title = titleEl.value
+	const price = +priceEl.value
+
+	const createCourse = new Course(title, price)
+
+	validate(createCourse)
+
+	console.log('createCourse', createCourse)
+})
