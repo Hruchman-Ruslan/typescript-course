@@ -10,6 +10,7 @@
   "author": "Hruchman-Ruslan",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^22.7.5",
     "lite-server": "^2.6.1"
   }
 }

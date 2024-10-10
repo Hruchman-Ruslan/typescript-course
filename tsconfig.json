@@ -2,9 +2,10 @@
 	"compilerOptions": {
 		/* Modules */
 		"target": "ES2016",
-		"module": "commonjs", // CommonJS module system
+		"module": "amd", // CommonJS module system
 		"rootDir": "./src", // Source files root directory
 		"outDir": "./dist", // Output directory for compiled files
+		"outFile": "./dist/bundle.js", // Output to a single file
 		"removeComments": true, // Remove comments in output
 		"noEmitOnError": true, // No output if there are errors
 		"sourceMap": true, // Generate source maps
