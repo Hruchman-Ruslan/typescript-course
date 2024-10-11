@@ -1,10 +1,10 @@
-import { Component } from './base-component.js'
-import { Validatable, validate } from '../util/validations.js'
-import { autobind } from '../decorators/autobind.js'
+import Cmp from './base-component.js'
+import * as Validate from '../util/validations.js'
+import { autobind as Autobind } from '../decorators/autobind.js'
 import { projectState } from '../state/project.js'
 
 // ProjectInput class
-export class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {
+export class ProjectInput extends Cmp<HTMLDivElement, HTMLFormElement> {
 	titleInputElement: HTMLInputElement
 	descriptionInputElement: HTMLInputElement
 	peopleInputElement: HTMLInputElement
@@ -36,18 +36,18 @@ export class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {
 		const enteredDescription = this.descriptionInputElement.value
 		const enteredPeople = this.peopleInputElement.value
 
-		const titleValidatable: Validatable = {
+		const titleValidatable: Validate.Validatable = {
 			value: enteredTitle,
 			required: true,
 		}
 
-		const descriptionValidatable: Validatable = {
+		const descriptionValidatable: Validate.Validatable = {
 			value: enteredDescription,
 			required: true,
 			minLength: 5,
 		}
 
-		const peopleValidatable: Validatable = {
+		const peopleValidatable: Validate.Validatable = {
 			value: +enteredPeople,
 			required: true,
 			min: 1,
@@ -55,9 +55,9 @@ export class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {
 		}
 
 		if (
-			!validate(titleValidatable) ||
-			!validate(descriptionValidatable) ||
-			!validate(peopleValidatable)
+			!Validate.validate(titleValidatable) ||
+			!Validate.validate(descriptionValidatable) ||
+			!Validate.validate(peopleValidatable)
 		) {
 			alert('Invalid input, please try again!')
 			return
@@ -72,7 +72,7 @@ export class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {
 		this.peopleInputElement.value = ''
 	}
 
-	@autobind
+	@Autobind
 	private submitHandler(e: Event) {
 		e.preventDefault()
 		const userInput = this.gatherUserInput()
