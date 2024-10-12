@@ -3,7 +3,7 @@
 		/* Modules */
 		"target": "ES2016",
 		"module": "ES2015", // CommonJS module system
-		"rootDir": "./src", // Source files root directory
+		// "rootDir": "./src", // Source files root directory
 		"outDir": "./dist", // Output directory for compiled files
 		// "outFile": "./dist/bundle.js", // Output to a single file
 		"removeComments": true, // Remove comments in output
