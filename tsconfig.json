@@ -3,6 +3,7 @@
 		/* Modules */
 		"target": "ES2016",
 		"module": "ES2015", // CommonJS module system
+		"moduleResolution": "node", // Resolves modules using Node.js' module resolution strategy.
 		// "rootDir": "./src", // Source files root directory
 		"outDir": "./dist", // Output directory for compiled files
 		// "outFile": "./dist/bundle.js", // Output to a single file
