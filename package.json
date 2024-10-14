@@ -11,10 +11,12 @@
 	"author": "Hruchman-Ruslan",
 	"license": "ISC",
 	"devDependencies": {
-		"@types/lodash": "^4.17.10"	
+		"@types/lodash": "^4.17.10"
 	},
 	"dependencies": {
+		"class-transformer": "^0.5.1",
 		"lodash": "^4.17.21",
+		"reflect-metadata": "^0.2.2",
 		"ts-loader": "^9.5.1",
 		"typescript": "^5.6.3",
 		"webpack": "^5.95.0",
